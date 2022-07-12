@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import "../reportTable.styles.scss";
-
-import ReportContext from "../../../context/reportContext";
 
 const DayTable = ({ dayData, day, date }) => {
   const { startDayShift, endDayShift, startNightShift, endNightShift, sum } =

@@ -1,12 +1,8 @@
-import { useContext } from "react";
-import ReportContext from "../../context/reportContext";
-
 import "./reportTable.styles.scss";
 import ReportDaysTable from "./reportDaysTable.component";
 import HeaderTable from "./header/headerTable.component";
 
 const ReportTable = ({ employee }) => {
-  const { jsDate, allDataForReports } = useContext(ReportContext);
   return (
     <div>
       <table
