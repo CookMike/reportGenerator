@@ -24,23 +24,28 @@ const Schedule = () => {
       <br />
       <br />
       <h1>Schedule </h1>
+      {console.log(allEmployees[0]["Příjmení"])}
       <br />
       <br />
       <br />
       {console.log(jsDate)}
-      <ReportTable />
-      <br />
-      <br />
-      <br />
-      <ReactHtmlTableToExcel
-        table="sheet0"
-        filename="tablexls"
-        sheet="tablexls"
-        buttonText="Download as XLS"
-      />
-      <br />
-      <br />
-      <br />
+      {allEmployees.map((employee) => (
+        <div>
+          <ReportTable employee={employee} />
+          <br />
+          <br />
+          <br />
+          <ReactHtmlTableToExcel
+            table={`${employee["Příjmení"]}+${employee["Jméno"]}`}
+            filename="tablexls"
+            sheet="tablexls"
+            buttonText={`${employee["Příjmení"]} vykaz ve formatu XLS`}
+          />
+          <br />
+          <br />
+          <br />
+        </div>
+      ))}
     </div>
   );
 };

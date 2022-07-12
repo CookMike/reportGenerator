@@ -3,7 +3,7 @@ import ReportContext from "../../context/reportContext";
 
 import "./reportTable.styles.scss";
 
-const ReportTable = () => {
+const ReportTable = (employeeData) => {
   const {
     matchedValues,
     findEmployee,
@@ -14,7 +14,7 @@ const ReportTable = () => {
     allEmployees,
   } = useContext(ReportContext);
 
-  const employee = allEmployees[0];
+  const initials = employeeData.employee;
 
   const getArrayofDaysInReportedMonth = (jsDate) => {
     const reportedMonth = jsDate.getMonth() + 1;
@@ -76,8 +76,8 @@ const ReportTable = () => {
     datesForReportedMonth,
     jsDate
   );
-  console.log(weekDaysInReportedMonth);
-  console.log(datesForReportedMonth);
+  // console.log(weekDaysInReportedMonth);
+  // console.log(datesForReportedMonth);
 
   return (
     <div>
@@ -85,7 +85,7 @@ const ReportTable = () => {
         border="0"
         cellPadding="0"
         cellSpacing="0"
-        id="sheet0"
+        id={`${initials["Příjmení"]}+${initials["Jméno"]}`}
         className="sheet0 gridlines"
       >
         <col className="col0" />
@@ -145,19 +145,19 @@ const ReportTable = () => {
           </tr>
           <tr className="row7">
             <td className="column0 style56 s style57" colSpan="5">
-              {employee["Příjmení"]}
+              {initials["Příjmení"]}
             </td>
             <td className="column5 style60 s style60" colSpan="4">
-              {employee["Jméno"]}
+              {initials["Jméno"]}
             </td>
             <td className="column9 style62 s style63" colSpan="4">
               {facilityName}
             </td>
             <td className="column13 style65 s style65" colSpan="3">
-              {employee["Pozice"]}
+              {initials["Pozice"]}
             </td>
             <td className="column16 style65 s style67" colSpan="3">
-              {employee["Úvazek"].substring(0, 3)}
+              {initials["Úvazek"].substring(0, 3)}
             </td>
           </tr>
           <tr className="row9">
