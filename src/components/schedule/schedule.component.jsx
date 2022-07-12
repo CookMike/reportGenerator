@@ -5,11 +5,10 @@ import ReactHtmlTableToExcel from "react-html-table-to-excel";
 
 import ReportContext from "../../context/reportContext";
 const Schedule = () => {
-  const { arrayOfEmployeesData, allDataForReports } = useContext(ReportContext);
+  const { allDataForReports } = useContext(ReportContext);
 
   return (
     <div>
-      {console.log(allDataForReports)}
       <br />
       <br />
       <br />
@@ -17,23 +16,23 @@ const Schedule = () => {
       <br />
       <br />
       <br />
-      {/* {allEmployees.map((employee) => (
-        <div>
+      {Object.keys(allDataForReports).map((employee) => (
+        <div key={employee}>
           <ReportTable employee={employee} />
           <br />
           <br />
           <br />
           <ReactHtmlTableToExcel
-            table={`${employee["Příjmení"]}+${employee["Jméno"]}`}
+            table={`${employee}+${employee}`}
             filename="tablexls"
             sheet="tablexls"
-            buttonText={`${employee["Příjmení"]} vykaz ve formatu XLS`}
+            buttonText={`${employee} vykaz ve formatu XLS`}
           />
           <br />
           <br />
           <br />
         </div>
-      ))} */}
+      ))}
     </div>
   );
 };

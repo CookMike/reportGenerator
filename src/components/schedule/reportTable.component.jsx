@@ -5,81 +5,15 @@ import "./reportTable.styles.scss";
 import ReportDaysTable from "./reportDaysTable.component";
 import HeaderTable from "./header/headerTable.component";
 
-const ReportTable = (employeeData) => {
-  const { jsDate } = useContext(ReportContext);
-
-  const initials = employeeData.employee;
-
-  const getArrayofDaysInReportedMonth = (jsDate) => {
-    const reportedMonth = jsDate.getMonth() + 1;
-    const numberOfDaysInReportedMonth = new Date(
-      jsDate.getFullYear(),
-      jsDate.getMonth(),
-      0
-    ).getDate();
-
-    const daysForReport = new Array(numberOfDaysInReportedMonth)
-      .fill(1)
-      .map((day, index) => {
-        const days = day + index;
-        const dateDay = days.toString().concat("." + reportedMonth);
-
-        return dateDay;
-      });
-    return daysForReport;
-  };
-  const datesForReportedMonth = getArrayofDaysInReportedMonth(jsDate);
-
-  const weekDaysForReport = (daysForReport, date) => {
-    const weekDays = daysForReport.map((day) => {
-      switch (
-        new Date(
-          `${date.getFullYear()}.${day.split(".").reverse()}`.split(".")
-        ).getDay()
-      ) {
-        case 0:
-          day = "Neděle";
-          break;
-        case 1:
-          day = "Pondělí";
-          break;
-        case 2:
-          day = "Úterý";
-          break;
-        case 3:
-          day = "Středa";
-          break;
-        case 4:
-          day = "Čtvrtek";
-          break;
-        case 5:
-          day = "Pátek";
-          break;
-        case 6:
-          day = "Sobota";
-          break;
-        default:
-          day = "No such day";
-      }
-      return day;
-    });
-
-    return weekDays;
-  };
-  const weekDaysInReportedMonth = weekDaysForReport(
-    datesForReportedMonth,
-    jsDate
-  );
-  // console.log(weekDaysInReportedMonth);
-  // console.log(datesForReportedMonth);
-
+const ReportTable = ({ employee }) => {
+  const { jsDate, allDataForReports } = useContext(ReportContext);
   return (
     <div>
       <table
         border="0"
         cellPadding="0"
         cellSpacing="0"
-        id={`${initials["Příjmení"]}+${initials["Jméno"]}`}
+        id={`${employee}+${employee}`}
         className="sheet0 gridlines"
       >
         <col className="col0" />
@@ -102,8 +36,8 @@ const ReportTable = (employeeData) => {
         <col className="col17" />
         <col className="col18" />
         <tbody>
-          <HeaderTable initials={initials} />
-          <ReportDaysTable initials={initials} />
+          <HeaderTable employee={employee} />
+          <ReportDaysTable employee={employee} />
           {/* <tr className="row14">
             <td className="column0 style19 f">1/5</td>
             <td className="column1 style20 f">Sunday</td>

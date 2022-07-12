@@ -4,17 +4,16 @@ import "../reportTable.styles.scss";
 
 import ReportContext from "../../../context/reportContext";
 
-const HeaderTable = (personData) => {
+const HeaderTable = ({ employee }) => {
+  const { allDataForReports, jsDate, facilityName, codeFinal, managerName } =
+    useContext(ReportContext);
   const {
-    matchedValues,
-    findEmployee,
-    jsDate,
-    facilityName,
-    codeFinal,
-    managerName,
-    allEmployees,
-  } = useContext(ReportContext);
-  const initials = personData.initials;
+    Jméno: name,
+    Příjmení: surname,
+    Úvazek: contract,
+    Pozice: position,
+    shiftsData: shifts,
+  } = allDataForReports[employee];
   return (
     <React.Fragment>
       <tr className="row0">
@@ -54,19 +53,19 @@ const HeaderTable = (personData) => {
       </tr>
       <tr className="row7">
         <td className="column0 style56 s style57" colSpan="5">
-          {initials["Příjmení"]}
+          {surname}
         </td>
         <td className="column5 style60 s style60" colSpan="4">
-          {initials["Jméno"]}
+          {name}
         </td>
         <td className="column9 style62 s style63" colSpan="4">
           {facilityName}
         </td>
         <td className="column13 style65 s style65" colSpan="3">
-          {initials["Pozice"]}
+          {position}
         </td>
         <td className="column16 style65 s style67" colSpan="3">
-          {initials["Úvazek"].substring(0, 3)}
+          {contract.substring(0, 3)}
         </td>
       </tr>
       <tr className="row9">

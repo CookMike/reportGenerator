@@ -30,7 +30,7 @@ export function ReportProvider({ children }) {
     const reportedMonth = jsDate.getMonth() + 1;
     const numberOfDaysInReportedMonth = new Date(
       jsDate.getFullYear(),
-      jsDate.getMonth(),
+      jsDate.getMonth() + 1,
       0
     ).getDate();
 
@@ -103,12 +103,49 @@ export function ReportProvider({ children }) {
       }))
     );
     Object.keys(completeDataObject).map(
-      (key, index) =>
+      (key) =>
         (completeDataObject[key]["shiftsData"] = monthWithWorkedShifts(key))
     );
     return completeDataObject;
   };
   const allDataForReports = employeesAndShiftsData(arrayOfEmployeesData);
+
+  const weekDaysSwitch = (jsDate) => {
+    const weekDays = getArrayofDaysInReportedMonth(jsDate).map((day) => {
+      switch (
+        new Date(
+          `${jsDate.getFullYear()}.${day.split(".").reverse()}`.split(".")
+        ).getDay()
+      ) {
+        case 0:
+          day = "Neděle";
+          break;
+        case 1:
+          day = "Pondělí";
+          break;
+        case 2:
+          day = "Úterý";
+          break;
+        case 3:
+          day = "Středa";
+          break;
+        case 4:
+          day = "Čtvrtek";
+          break;
+        case 5:
+          day = "Pátek";
+          break;
+        case 6:
+          day = "Sobota";
+          break;
+        default:
+          day = "No such day";
+      }
+      return day;
+    });
+
+    return weekDays;
+  };
 
   return (
     <ReportContext.Provider
@@ -119,6 +156,7 @@ export function ReportProvider({ children }) {
         managerName,
         jsDate,
         allDataForReports,
+        weekDaysSwitch,
       }}
     >
       {children}
