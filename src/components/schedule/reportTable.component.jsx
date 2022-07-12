@@ -2,6 +2,8 @@ import { useContext } from "react";
 import ReportContext from "../../context/reportContext";
 
 import "./reportTable.styles.scss";
+import ReportDaysTable from "./reportDaysTable.component";
+import HeaderTable from "./header/headerTable.component";
 
 const ReportTable = (employeeData) => {
   const {
@@ -108,111 +110,9 @@ const ReportTable = (employeeData) => {
         <col className="col17" />
         <col className="col18" />
         <tbody>
-          <tr className="row0">
-            <td
-              className="column0 style25 null style30"
-              colSpan="4"
-              rowSpan="2"
-            ></td>
-            <td className="column4 style34 s style39" colSpan="7" rowSpan="2">
-              Plánované směny
-            </td>
-            <td className="column11 style43 s style44" colSpan="8">
-              PLÁNOVANÝ ROZVRH SMĚN NA MĚSÍC
-            </td>
-          </tr>
-          <tr className="row3">
-            <td className="column11 style47 n style48" colSpan="8">
-              {`${jsDate.getMonth() + 1}.${jsDate.getFullYear()}`}
-            </td>
-          </tr>
-          <tr className="row5">
-            <td className="column0 style49 s style51" colSpan="5">
-              Přijmení
-            </td>
-            <td className="column5 style51 s style51" colSpan="4">
-              Jméno
-            </td>
-            <td className="column9 style53 s style53" colSpan="4">
-              Domácí - výchozí - pracoviště
-            </td>
-            <td className="column13 style54 s style54" colSpan="3">
-              Zařazen jako
-            </td>
-            <td className="column16 style53 s style55" colSpan="3">
-              Prac.smlouva
-            </td>
-          </tr>
-          <tr className="row7">
-            <td className="column0 style56 s style57" colSpan="5">
-              {initials["Příjmení"]}
-            </td>
-            <td className="column5 style60 s style60" colSpan="4">
-              {initials["Jméno"]}
-            </td>
-            <td className="column9 style62 s style63" colSpan="4">
-              {facilityName}
-            </td>
-            <td className="column13 style65 s style65" colSpan="3">
-              {initials["Pozice"]}
-            </td>
-            <td className="column16 style65 s style67" colSpan="3">
-              {initials["Úvazek"].substring(0, 3)}
-            </td>
-          </tr>
-          <tr className="row9">
-            <td className="column0 style69 s style70" rowSpan="3">
-              Datum
-            </td>
-            <td className="column1 style72 s style73" rowSpan="3">
-              den
-            </td>
-            <td className="column2 style75 s style77" colSpan="3">
-              Nadřízený pracovník - velitel objektu
-            </td>
-            <td className="column5 style84 s style86" colSpan="6">
-              {managerName}
-            </td>
-            <td className="column11 style93 s style95" colSpan="4">
-              Divize
-            </td>
-            <td className="column15 style93 n style102" colSpan="4">
-              {codeFinal}
-            </td>
-          </tr>
-          <tr className="row12">
-            <td className="column2 style105 s style107" colSpan="6">
-              Plánovaná pracovní doba
-            </td>
-            <td className="column8 style105 s style107" colSpan="7">
-              Plánovaná pracovní doba
-            </td>
-            <td
-              className="column15 style108 s style104"
-              colSpan="4"
-              rowSpan="2"
-            >
-              Plánovaný počet hodin
-            </td>
-          </tr>
-          <tr className="row13">
-            <td className="column2 style1 s">od</td>
-            <td className="column3 style2 s">do</td>
-            <td className="column4 style1 s">od</td>
-            <td className="column5 style3 s">do</td>
-            <td className="column6 style110 s style111" colSpan="2">
-              pracoviště
-            </td>
-            <td className="column8 style4 s">den</td>
-            <td className="column9 style5 s">noc</td>
-            <td className="column10 style5 s">so</td>
-            <td className="column11 style5 s">ne</td>
-            <td className="column12 style6 s">sv.</td>
-            <td className="column13 style110 s style111" colSpan="2">
-              celkem
-            </td>
-          </tr>
-          <tr className="row14">
+          <HeaderTable initials={initials} />
+          <ReportDaysTable />
+          {/* <tr className="row14">
             <td className="column0 style19 f">1/5</td>
             <td className="column1 style20 f">Sunday</td>
             <td className="column2 style24 s">oD</td>
@@ -877,7 +777,7 @@ const ReportTable = (employeeData) => {
             <td className="column15 style131 s style132" colSpan="4">
               Ostatní
             </td>
-          </tr>
+          </tr> */}
           <tr className="row45">
             <td
               className="column0 style144 s style150"

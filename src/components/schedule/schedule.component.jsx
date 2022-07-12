@@ -24,11 +24,9 @@ const Schedule = () => {
       <br />
       <br />
       <h1>Schedule </h1>
-      {console.log(allEmployees[0]["Příjmení"])}
       <br />
       <br />
       <br />
-      {console.log(jsDate)}
       {allEmployees.map((employee) => (
         <div>
           <ReportTable employee={employee} />
