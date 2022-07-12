@@ -6,7 +6,7 @@ import SideTableInfo from "./days/sideTableInfo.component";
 import DayTable from "./days/dayTable.component";
 import "./reportTable.styles.scss";
 
-const ReportDaysTable = () => {
+const ReportDaysTable = (data) => {
   const {
     matchedValues,
     findEmployee,
@@ -16,6 +16,14 @@ const ReportDaysTable = () => {
     managerName,
     allEmployees,
   } = useContext(ReportContext);
+
+  const {
+    Jméno: name,
+    Příjmení: surname,
+    Úvazek: contractType,
+    Pozice: occupation,
+  } = data.initials;
+
   const getArrayofDaysInReportedMonth = (jsDate) => {
     const reportedMonth = jsDate.getMonth() + 1;
     const numberOfDaysInReportedMonth = new Date(
@@ -34,7 +42,6 @@ const ReportDaysTable = () => {
       });
     return daysForReport;
   };
-  const datesForReportedMonth = getArrayofDaysInReportedMonth(jsDate);
 
   const weekDaysForReport = (daysForReport, date) => {
     const weekDays = daysForReport.map((day) => {
@@ -72,17 +79,29 @@ const ReportDaysTable = () => {
 
     return weekDays;
   };
+  const datesForReportedMonth = getArrayofDaysInReportedMonth(jsDate);
   const weekDaysInReportedMonth = weekDaysForReport(
     datesForReportedMonth,
     jsDate
   );
+  const allDays = matchedValues(surname);
+  const personalDaysInWork = Object.keys(matchedValues(surname)).filter(
+    (key) => !key.includes("Příjmení")
+  );
   return (
     <React.Fragment>
-      <tr className="row14">
-        <DayTable />
-        <SideTableInfo />
-        {/* if id%2===1 <SideTableInfo /> */}
-      </tr>
+      {datesForReportedMonth.map((date, index) => (
+        <tr className="row14">
+          <DayTable
+            day={weekDaysInReportedMonth[index]}
+            date={date}
+            surname={surname}
+            allDays={allDays}
+            personalDaysInWork={personalDaysInWork}
+          />
+          {index % 2 !== 1 && <SideTableInfo />}
+        </tr>
+      ))}
     </React.Fragment>
   );
 };

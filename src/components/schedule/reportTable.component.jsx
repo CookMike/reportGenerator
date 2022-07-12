@@ -6,15 +6,7 @@ import ReportDaysTable from "./reportDaysTable.component";
 import HeaderTable from "./header/headerTable.component";
 
 const ReportTable = (employeeData) => {
-  const {
-    matchedValues,
-    findEmployee,
-    jsDate,
-    facilityName,
-    codeFinal,
-    managerName,
-    allEmployees,
-  } = useContext(ReportContext);
+  const { jsDate } = useContext(ReportContext);
 
   const initials = employeeData.employee;
 
@@ -111,7 +103,7 @@ const ReportTable = (employeeData) => {
         <col className="col18" />
         <tbody>
           <HeaderTable initials={initials} />
-          <ReportDaysTable />
+          <ReportDaysTable initials={initials} />
           {/* <tr className="row14">
             <td className="column0 style19 f">1/5</td>
             <td className="column1 style20 f">Sunday</td>
