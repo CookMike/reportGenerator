@@ -1,0 +1,33 @@
+.Navigation {
+  color: $color-green-darkest;
+  height: 2.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5em 0;
+  box-shadow: inset 1px 1px 1px 1px $color-silver-light;
+  background-color: $color-silver-light;
+
+  h1 {
+    margin-left: 4em;
+    font-size: 1.8em;
+    text-shadow: 1px 1px #2c2e2c;
+  }
+  nav {
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+
+    .Section {
+      height: inherit;
+      margin: 0 1em;
+      cursor: pointer;
+      color: $color-green-light;
+      font-family: Arial;
+      font-size: 15px;
+      font-weight: bold;
+      text-shadow: 0px 1px 0px #8d9094;
+    }
+  }
+}

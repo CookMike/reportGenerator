@@ -88,6 +88,7 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
+
 article,
 aside,
 details,
@@ -116,59 +117,23 @@ q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after {
-  content: "";
-  content: none;
+blockquote {
+  &:before,
+  &:after {
+    content: "";
+    content: none;
+  }
 }
 
-q:before, q:after {
-  content: "";
-  content: none;
+q {
+  &:before,
+  &:after {
+    content: "";
+    content: none;
+  }
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-.Navigation {
-  color: rgb(19, 109, 21);
-  height: 2.3em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.5em 0;
-  box-shadow: inset 1px 1px 1px 1px #c1cfe1;
-  background-color: #c1cfe1;
-}
-.Navigation h1 {
-  margin-left: 4em;
-  font-size: 1.8em;
-  text-shadow: 1px 1px #2c2e2c;
-}
-.Navigation nav {
-  display: flex;
-  height: fit-content;
-  justify-content: center;
-  align-items: center;
-}
-.Navigation nav .Section {
-  height: inherit;
-  margin: 0 1em;
-  cursor: pointer;
-  color: rgb(38, 139, 7);
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  text-shadow: 0px 1px 0px #8d9094;
-}
-
-.homePage {
-  color: rgb(19, 109, 21);
-  height: fit-content;
-  width: 80%;
-  background-color: #c1cfe1;
-  margin: auto;
-}
-
-/*# sourceMappingURL=App.css.map */
