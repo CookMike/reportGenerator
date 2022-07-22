@@ -1,35 +1,26 @@
 import { useContext } from "react";
-
-import ReportTable from "../schedule/reportTable.component";
 import ReactHtmlTableToExcel from "react-html-table-to-excel";
-
+import SingleReportTable from "./singleReportTable.component";
 import ReportContext from "../../context/reportContext";
+
 const Schedule = () => {
   const { allDataForReports } = useContext(ReportContext);
 
   return (
     <div>
       <br />
-      <br />
-      <br />
       <h1>Schedule </h1>
-      <br />
-      <br />
       <br />
       {Object.keys(allDataForReports).map((employee) => (
         <div key={employee}>
-          <ReportTable employee={employee} />
-          <br />
-          <br />
+          <SingleReportTable employee={employee} />;
           <br />
           <ReactHtmlTableToExcel
-            table={`${employee}+${employee}`}
-            filename="tablexls"
+            table={`${employee}`}
+            filename={`${employee}.xls`}
             sheet="tablexls"
             buttonText={`${employee} vykaz ve formatu XLS`}
           />
-          <br />
-          <br />
           <br />
         </div>
       ))}

@@ -1,40 +1,36 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { ReportProvider } from "../../context/reportContext";
+
+import Button, { Typography, InputLabel, Input } from "@mui/material/Button";
+
 import Schedule from "../schedule/schedule.component";
 import GeneralContext from "../../context/generalContext";
 const HomePage = () => {
-  const { readDataFromInput, fileUploaded, isFileLoaded } =
-    useContext(GeneralContext);
-
-  useEffect(() => {
-    isFileLoaded && localStorage.setItem("Schedule", fileUploaded);
-  });
+  const { readDataFromInput, isFileLoaded } = useContext(GeneralContext);
 
   return (
     <div className="homePage">
-      <h1>Homepage</h1>
+      <h1 className=".MuiTypography-h1">Homepage</h1>
       <br />
       <label>Rozpis</label>
       <br />
-      <br />
-      <br />
-      <br />
+
       <form>
-        <label>Nahraj rozpis</label>
-        <input
-          type="file"
-          accept=".xlsx, .xls, .csv"
-          onChange={readDataFromInput}
-        />
-        <button type="submit">Submit</button>
+        <label className=".MuiInputLabel-standard">Nahraj rozpis</label>
+        <Button>
+          <input
+            className=".MuiFilledInput-input"
+            type="file"
+            accept=".xlsx, .xls, .csv"
+            onChange={readDataFromInput}
+          />
+        </Button>
         {isFileLoaded && (
           <ReportProvider>
             <Schedule />
           </ReportProvider>
         )}
       </form>
-      <br />
-      <br />
       <br />
     </div>
   );

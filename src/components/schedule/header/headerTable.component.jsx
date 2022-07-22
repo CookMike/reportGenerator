@@ -5,14 +5,18 @@ import "../reportTable.styles.scss";
 import ReportContext from "../../../context/reportContext";
 
 const HeaderTable = ({ employee }) => {
-  const { allDataForReports, jsDate, facilityName, codeFinal, managerName } =
-    useContext(ReportContext);
+  const {
+    allDataForReports,
+    currentMonthDate,
+    facilityName,
+    codeFinal,
+    managerName,
+  } = useContext(ReportContext);
   const {
     Jméno: name,
     Příjmení: surname,
     Úvazek: contract,
     Pozice: position,
-    shiftsData: shifts,
   } = allDataForReports[employee];
   return (
     <React.Fragment>
@@ -31,7 +35,9 @@ const HeaderTable = ({ employee }) => {
       </tr>
       <tr className="row3">
         <td className="column11 style47 n style48" colSpan="8">
-          {`${jsDate.getMonth() + 1}.${jsDate.getFullYear()}`}
+          {`${
+            currentMonthDate.getMonth() + 1
+          }.${currentMonthDate.getFullYear()}`}
         </td>
       </tr>
       <tr className="row5">
